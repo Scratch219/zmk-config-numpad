@@ -1,7 +1,7 @@
 name: "tidbit_numpad"
 type: shield
 
-description: "Shield für kabelloses Numpad mit V1940 ProMicro NRF52840 und Encoder"
+description: "Handwired 6x4 Numpad with encoder using V1940 ProMicro NRF52840"
 
 url: "https://github.com/Scratch219/zmk-config-numpad"
 
