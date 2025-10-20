@@ -1,0 +1,19 @@
+name: "tidbit_numpad"
+type: shield
+
+description: "Custom shield for Tidbit-based wireless numpad with encoder and media keys"
+
+url: "https://github.com/Scratch219/zmk-config-numpad"
+
+# Matrix layout
+matrix:
+  rows: 6
+  columns: 4
+
+# Optional: define encoder pins if needed
+encoder:
+  count: 1
+  pins:
+    - pin_a: <your_pin_a>
+      pin_b: <your_pin_b>
+      press: <your_press_pin>
