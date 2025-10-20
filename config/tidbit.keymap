@@ -1,31 +1,13 @@
-# tidbit.keymap
-# Vollständige ZMK-Keymap für kabelloses Numpad mit Mediensteuerung und Encoder
-# Board: Tidbit Numpad
-# Autor: Aleksandar Schramme
-
-layout: [
-  { rows: 6, columns: 4 }
-]
+layout: { rows: 6, columns: 4 }
 
 layers:
   - name: "Default"
     bindings: [
-      # Reihe 1: Mediensteuerung + Encoder-Button
       C_MUTE, C_PREV, C_NEXT, LT(1, C_PLAY_PAUSE),
-
-      # Reihe 2: Numlock und Operatoren
       KP_NUMLOCK, KP_SLASH, KP_ASTERISK, KP_MINUS,
-
-      # Reihe 3: Zahlenblock oben
       KP_7, KP_8, KP_9, KP_PLUS,
-
-      # Reihe 4: Zahlenblock Mitte
       KP_4, KP_5, KP_6, &none,
-
-      # Reihe 5: Zahlenblock unten
       KP_1, KP_2, KP_3, &none,
-
-      # Reihe 6: 0, Komma, Enter
       KP_0, KP_DOT, KP_ENTER, &none
     ]
     sensor_bindings:
@@ -34,22 +16,11 @@ layers:
 
   - name: "Func"
     bindings: [
-      # Reihe 1: Debug / Reset
       &none, SYS_RESET, BOOTLOADER, &none,
-
-      # Reihe 2: Shifted Operatoren
       &none, QUESTION, PSCRN, UNDER,
-
-      # Reihe 3: Navigation oben
       HOME, UP, PG_UP, EQUAL,
-
-      # Reihe 4: Navigation Mitte
       LEFT, &none, RIGHT, &none,
-
-      # Reihe 5: Navigation unten
       END, DOWN, PG_DN, &none,
-
-      # Reihe 6: Einfügen, Löschen, Enter
       INS, DEL, KP_ENTER, &none
     ]
     sensor_bindings:
@@ -57,14 +28,11 @@ layers:
         params: [ C_BRI_UP, C_BRI_DOWN ]
 
 boards:
-  - name: "tidbit_numpad"
+  - name: "v1940"
 
 shields:
   - name: "tidbit_numpad"
 
 combos: []
-
 macros: []
-
 behaviors: []
-
