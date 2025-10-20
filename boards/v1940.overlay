@@ -1,0 +1,19 @@
+#include <dt-bindings/zmk/keys.h>
+#include <dt-bindings/zmk/bt.h>
+#include <dt-bindings/zmk/outputs.h>
+
+/ {
+    chosen {
+        zmk,keyboard = &keypad;
+    };
+
+    keypad: keypad {
+        compatible = "zmk,matrix-transform";
+        rows = <6>;
+        columns = <4>;
+        input-gpios = <&gpio0 2 GPIO_ACTIVE_LOW>, <&gpio0 3 GPIO_ACTIVE_LOW>, <&gpio0 4 GPIO_ACTIVE_LOW>,
+                      <&gpio0 5 GPIO_ACTIVE_LOW>, <&gpio0 6 GPIO_ACTIVE_LOW>, <&gpio0 7 GPIO_ACTIVE_LOW>;
+        output-gpios = <&gpio1 0 GPIO_ACTIVE_LOW>, <&gpio1 1 GPIO_ACTIVE_LOW>, <&gpio1 2 GPIO_ACTIVE_LOW>,
+                       <&gpio1 3 GPIO_ACTIVE_LOW>;
+    };
+};
