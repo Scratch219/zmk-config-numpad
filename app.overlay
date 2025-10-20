@@ -1,0 +1,15 @@
+/ {
+    keymap {
+        compatible = "zmk,keymap";
+
+        default_layer {
+            bindings = < /* Wird aus tidbit.keymap geladen */ >;
+            sensor-bindings = <&inc_dec_kp C_VOLUME_UP C_VOLUME_DOWN>;
+        };
+
+        func_layer {
+            bindings = < /* Wird aus tidbit.keymap geladen */ >;
+            sensor-bindings = <&inc_dec_kp C_BRI_UP C_BRI_DOWN>;
+        };
+    };
+};
