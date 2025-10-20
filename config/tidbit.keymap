@@ -1,72 +1,70 @@
-/*
- * Copyright (c) 2020 The ZMK Contributors
- *
- * SPDX-License-Identifier: MIT
- */
+# tidbit.keymap
+# Vollständige ZMK-Keymap für kabelloses Numpad mit Mediensteuerung und Encoder
+# Board: Tidbit Numpad
+# Autor: Aleksandar Schramme
 
-#include <behaviors.dtsi>
-#include <dt-bindings/zmk/bt.h>
-#include <dt-bindings/zmk/keys.h>
-#include <dt-bindings/zmk/outputs.h>
+layout: [
+  { rows: 6, columns: 4 }
+]
 
+layers:
+  - name: "Default"
+    bindings: [
+      # Reihe 1: Mediensteuerung + Encoder-Button
+      C_MUTE, C_PREV, C_NEXT, LT(1, C_PLAY_PAUSE),
 
-/* Enable ONLY ONE of the &encoder_1 nodes. They are wired to the same pins.*/
-/*
-&encoder_1 {
-    status = "okay";
-};
-&encoder_1_top_left {
-    status = "okay";
-};
-*/
+      # Reihe 2: Numlock und Operatoren
+      KP_NUMLOCK, KP_SLASH, KP_ASTERISK, KP_MINUS,
 
-/*
-&encoder_2 {
-    status = "okay";
-};
+      # Reihe 3: Zahlenblock oben
+      KP_7, KP_8, KP_9, KP_PLUS,
 
-&encoder_3 {
-    status = "okay";
-};
-*/
+      # Reihe 4: Zahlenblock Mitte
+      KP_4, KP_5, KP_6, &none,
 
-&encoder_4 {
-    status = "okay";
-};
+      # Reihe 5: Zahlenblock unten
+      KP_1, KP_2, KP_3, &none,
 
-/* Add any encoder(s) you have enabled to the sensors node, separated by spaces. */
-&sensors {
-    sensors = <&encoder_4>;
-};
+      # Reihe 6: 0, Komma, Enter
+      KP_0, KP_DOT, KP_ENTER, &none
+    ]
+    sensor_bindings:
+      - behavior: &inc_dec_kp
+        params: [ C_VOLUME_UP, C_VOLUME_DOWN ]
 
-/ {
-    keymap {
-        compatible = "zmk,keymap";
+  - name: "Func"
+    bindings: [
+      # Reihe 1: Debug / Reset
+      &none, SYS_RESET, BOOTLOADER, &none,
 
-        default_layer {
-            display-name = "Default Layer";
-            bindings = <
-                                &kp KP_NUMLOCK  &kp KP_ASTERISK &kp KP_MINUS
-                &kp KP_NUMBER_7 &kp KP_NUMBER_8 &kp KP_NUMBER_9 &kp KP_PLUS
-                &kp KP_NUMBER_4 &kp KP_NUMBER_5 &kp KP_NUMBER_6 &kp KP_SLASH
-                &kp KP_NUMBER_1 &kp KP_NUMBER_2 &kp KP_NUMBER_3 &lt 1 KP_ENTER
-                &kp C_MUTE      &kp KP_NUMBER_0 &kp KP_DOT      &kp KP_ENTER
-            >;
+      # Reihe 2: Shifted Operatoren
+      &none, QUESTION, PSCRN, UNDER,
 
-            sensor-bindings = <&inc_dec_kp C_VOLUME_UP C_VOLUME_DOWN>;
-        };
+      # Reihe 3: Navigation oben
+      HOME, UP, PG_UP, EQUAL,
 
-         func_layer {
-             display-name = "Func Layer";
-             bindings = <
-                                &none           &sys_reset      &bootloader
-                &out OUT_TOG    &out OUT_USB    &out OUT_BLE    &none
-                &bt BT_SEL 0    &bt BT_PRV      &bt BT_NXT      &bt BT_CLR
-                &bt BT_SEL 1    &bt BT_SEL 2    &bt BT_SEL 3    &trans
-                &kp C_MUTE      &none           &none           &none
-             >;
+      # Reihe 4: Navigation Mitte
+      LEFT, &none, RIGHT, &none,
 
-             sensor-bindings = <&inc_dec_kp C_VOLUME_UP C_VOLUME_DOWN>;
-         };
-    };
-};
+      # Reihe 5: Navigation unten
+      END, DOWN, PG_DN, &none,
+
+      # Reihe 6: Einfügen, Löschen, Enter
+      INS, DEL, KP_ENTER, &none
+    ]
+    sensor_bindings:
+      - behavior: &inc_dec_kp
+        params: [ C_BRI_UP, C_BRI_DOWN ]
+
+boards:
+  - name: "tidbit_numpad"
+
+shields:
+  - name: "tidbit_numpad"
+
+combos: []
+
+macros: []
+
+behaviors: []
+
