@@ -1,9 +1,0 @@
-/ {
-    encoder_4: encoder_4 {
-        compatible = "zmk,encoder";
-        label = "Encoder 4";
-        pin-a = <&gpio0 10 GPIO_ACTIVE_LOW>;
-        pin-b = <&gpio0 11 GPIO_ACTIVE_LOW>;
-        press = <&gpio0 12 GPIO_ACTIVE_LOW>;
-    };
-};
